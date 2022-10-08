@@ -36,12 +36,10 @@ void main() {
         id: '$i',
         created: '',
         image: '',
-        mealComponents: [],
+        mealComponents: const [],
         nutrition: nutrition,
       ),
     );
-
-    final responseData = {'meals': meals.map((meal) => meal.toJson()).toList()};
 
     setUp(() {
       snaqApiClient = MockSnaqApiClient();

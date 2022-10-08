@@ -1,7 +1,15 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
+    "homeAppBarTitle": "Foodr",
     "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
+        "description": "Text shown in the AppBar of the Home Page"
+    },
+    "homeMealsFetchErrorMessage": "Something went wrong while fetching meals. Please try again later.",
+    "@homeMealsFetchErrorMessage": {
+        "description": "Error text shown on the Home Page when an error occurred while fetching meals."
+    },
+    "noMealMessage": "No more meal to display",
+    "@noMealMessage": {
+        "description": "Text shown on the Home Page when there is no more meals to display."
     }
 }

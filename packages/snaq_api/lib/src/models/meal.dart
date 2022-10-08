@@ -51,12 +51,12 @@ class Meal extends Equatable {
 class MealComponent {
   /// {@macro mealComponent}
   const MealComponent({
-    required this.mainIngredient,
+    this.mainIngredient,
     required this.supplementaryIngredients,
   });
 
   /// The main ingredient of the meal component
-  final Ingredient mainIngredient;
+  final Ingredient? mainIngredient;
 
   /// List of supplementary ingredients of the meal component
   final List<Ingredient> supplementaryIngredients;
@@ -196,15 +196,18 @@ class Abbreviation {
 /// {@endtemplate}
 enum Nutrient {
   /// Carbohydrates
+  @JsonValue('Carbs')
   carbs,
 
   /// Kilocalories
   kcal,
 
   /// Fat
+  @JsonValue('Fat')
   fat,
 
   /// Protein
+  @JsonValue('Protein')
   protein,
 }
 
@@ -228,15 +231,19 @@ enum AbbreviationUnit {
 /// {@endtemplate}
 enum Name {
   /// Carbohydrates
+  @JsonValue('Carbohydrates')
   carbohydrates,
 
   /// Calories
+  @JsonValue('Calories')
   calories,
 
   /// Fats
+  @JsonValue('Fats')
   fats,
 
   /// Protein
+  @JsonValue('Protein')
   protein,
 }
 
@@ -247,8 +254,10 @@ enum Name {
 /// {@endtemplate}
 enum Unit {
   /// g
+  @JsonValue('Gram')
   gram,
 
   /// kcal
+  @JsonValue('Kilocalories')
   kilocalories,
 }

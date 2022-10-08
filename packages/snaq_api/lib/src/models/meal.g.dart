@@ -26,8 +26,9 @@ Map<String, dynamic> _$MealToJson(Meal instance) => <String, dynamic>{
 
 MealComponent _$MealComponentFromJson(Map<String, dynamic> json) =>
     MealComponent(
-      mainIngredient:
-          Ingredient.fromJson(json['mainIngredient'] as Map<String, dynamic>),
+      mainIngredient: json['mainIngredient'] == null
+          ? null
+          : Ingredient.fromJson(json['mainIngredient'] as Map<String, dynamic>),
       supplementaryIngredients:
           (json['supplementaryIngredients'] as List<dynamic>)
               .map((e) => Ingredient.fromJson(e as Map<String, dynamic>))
@@ -36,7 +37,7 @@ MealComponent _$MealComponentFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$MealComponentToJson(MealComponent instance) =>
     <String, dynamic>{
-      'mainIngredient': instance.mainIngredient.toJson(),
+      'mainIngredient': instance.mainIngredient?.toJson(),
       'supplementaryIngredients':
           instance.supplementaryIngredients.map((e) => e.toJson()).toList(),
     };
@@ -90,15 +91,15 @@ Map<String, dynamic> _$NutritionComponentToJson(NutritionComponent instance) =>
     };
 
 const _$NameEnumMap = {
-  Name.carbohydrates: 'carbohydrates',
-  Name.calories: 'calories',
-  Name.fats: 'fats',
-  Name.protein: 'protein',
+  Name.carbohydrates: 'Carbohydrates',
+  Name.calories: 'Calories',
+  Name.fats: 'Fats',
+  Name.protein: 'Protein',
 };
 
 const _$UnitEnumMap = {
-  Unit.gram: 'gram',
-  Unit.kilocalories: 'kilocalories',
+  Unit.gram: 'Gram',
+  Unit.kilocalories: 'Kilocalories',
 };
 
 Abbreviation _$AbbreviationFromJson(Map<String, dynamic> json) => Abbreviation(
@@ -118,8 +119,8 @@ const _$AbbreviationUnitEnumMap = {
 };
 
 const _$NutrientEnumMap = {
-  Nutrient.carbs: 'carbs',
+  Nutrient.carbs: 'Carbs',
   Nutrient.kcal: 'kcal',
-  Nutrient.fat: 'fat',
-  Nutrient.protein: 'protein',
+  Nutrient.fat: 'Fat',
+  Nutrient.protein: 'Protein',
 };

@@ -1,0 +1,15 @@
+{
+    "@@locale": "fr",
+    "homeAppBarTitle": "Foodr",
+    "@counterAppBarTitle": {
+        "description": "Texte affiché sur la AppBar sur la home page"
+    },
+    "homeMealsFetchErrorMessage": "Un problème est survenu lors de la recherche de repas. Veuillez réessayer plus tard.",
+    "@homeMealsFetchErrorMessage": {
+        "description": "Texte d'erreur affiché sur la page d'accueil lorsqu'une erreur s'est produite lors de la récupération des repas."
+    },
+    "noMealMessage": "Il n'y a plus de repas à afficher",
+    "@noMealMessage": {
+        "description": "Texte affiché sur la page d'accueil lorsqu'il n'y a plus de repas à afficher."
+    }
+}

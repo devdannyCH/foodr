@@ -39,13 +39,25 @@ void main() {
       energy: nutritionComponent,
     );
 
+    const mainIngredient = Ingredient(
+      name: 'Beef',
+      nutrition: nutrition,
+    );
+
+    const mealComponent = MealComponent(
+      mainIngredient: mainIngredient,
+      supplementaryIngredients: [mainIngredient],
+    );
+
     final meals = List.generate(
       3,
       (i) => Meal(
         id: '$i',
         created: '',
         image: '',
-        mealComponents: [],
+        mealComponents: const [
+          mealComponent,
+        ],
         nutrition: nutrition,
       ),
     );

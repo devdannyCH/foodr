@@ -1,13 +1,10 @@
-// Copyright (c) 2022, Very Good Ventures
-// https://verygood.ventures
-//
-// Use of this source code is governed by an MIT-style
-// license that can be found in the LICENSE file or at
-// https://opensource.org/licenses/MIT.
-
+import 'package:flutter/material.dart';
 import 'package:foodr/app/app.dart';
 import 'package:foodr/bootstrap.dart';
+import 'package:meals_repository/meals_repository.dart';
 
-void main() {
-  bootstrap(() => const App());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final mealsRepository = MealsRepository();
+  await bootstrap(() => App(mealsRepository: mealsRepository));
 }
