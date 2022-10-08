@@ -8,14 +8,16 @@ part 'meal.g.dart';
 /// A model containing data about a meal.
 /// {@endtemplate}
 @JsonSerializable(explicitToJson: true)
+// ignore: must_be_immutable
 class Meal extends Equatable {
   /// {@macro meal}
-  const Meal({
+  Meal({
     required this.id,
     required this.created,
     required this.image,
     required this.nutrition,
     required this.mealComponents,
+    this.status = MealStatus.stacked,
   });
 
   /// The ID of the meal
@@ -32,6 +34,11 @@ class Meal extends Equatable {
 
   /// List of ingredients composing the meal
   final List<MealComponent> mealComponents;
+
+  @JsonKey(defaultValue: MealStatus.stacked)
+
+  /// Current meal status (stacked, liked, disliked)
+  MealStatus status;
 
   /// Deserializes the given [JsonMap] into a [Meal].
   static Meal fromJson(JsonMap json) => _$MealFromJson(json);
@@ -260,4 +267,20 @@ enum Unit {
   /// kcal
   @JsonValue('Kilocalories')
   kilocalories,
+}
+
+@JsonEnum()
+
+/// {@template meal}
+/// A enum containing meal status
+/// {@endtemplate}
+enum MealStatus {
+  /// Displayed in the stack
+  stacked,
+
+  /// Liked
+  liked,
+
+  /// Disliked
+  disliked,
 }

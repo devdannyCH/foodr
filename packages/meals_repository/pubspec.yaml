@@ -7,6 +7,8 @@ environment:
   sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
+  meals_database:
+    path: ../meals_database
   snaq_api:
     path: ../snaq_api
 
