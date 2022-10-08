@@ -1,0 +1,18 @@
+name: meals_database
+description: Local database to store meals
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+
+dev_dependencies:
+  mocktail: ^0.3.0
+  test: ^1.19.2
+  very_good_analysis: ^3.1.0
+dependencies:
+  path: ^1.8.2
+  path_provider: ^2.0.11
+  sembast: ^3.3.0
+  snaq_api:
+    path: ../snaq_api
