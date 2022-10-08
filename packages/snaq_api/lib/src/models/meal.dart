@@ -17,8 +17,8 @@ class Meal extends Equatable {
     required this.image,
     required this.nutrition,
     required this.mealComponents,
-    this.status = MealStatus.stacked,
-  });
+    MealStatus? status,
+  }) : status = status ?? MealStatus.stacked;
 
   /// The ID of the meal
   final String id;

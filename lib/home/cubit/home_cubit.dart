@@ -21,7 +21,7 @@ class HomeCubit extends Cubit<HomeState> {
     );
 
     try {
-      final meals = await _mealsRepository.fetchAllMeals();
+      final meals = await _mealsRepository.fetchStackedMeals();
       emit(
         HomeState(
           status: HomeStatus.success,
@@ -36,5 +36,18 @@ class HomeCubit extends Cubit<HomeState> {
         ),
       );
     }
+  }
+
+  Future<void> like(Meal meal) async {
+    await _mealsRepository.like(meal);
+  }
+
+  Future<void> dislike(Meal meal) async {
+    await _mealsRepository.dislike(meal);
+  }
+
+  Future<void> reset() async {
+    await _mealsRepository.reset();
+    await fetchAllMeals();
   }
 }

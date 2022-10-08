@@ -60,7 +60,7 @@ void main() {
         when(() => snaqApiClient.fetchAllMeals()).thenThrow(Exception());
 
         expect(
-          () => subject.fetchAllMeals(),
+          () => subject.fetchStackedMeals(),
           throwsA(isA<MealsException>()),
         );
 
@@ -68,7 +68,7 @@ void main() {
       });
 
       test('makes correct request', () async {
-        await subject.fetchAllMeals();
+        await subject.fetchStackedMeals();
 
         verify(() => snaqApiClient.fetchAllMeals()).called(1);
       });

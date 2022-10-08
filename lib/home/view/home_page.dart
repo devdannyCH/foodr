@@ -96,6 +96,18 @@ class _MealStack extends StatelessWidget {
                   if (kDebugMode) {
                     print('$index, $direction');
                   }
+                  switch (direction) {
+                    case SwipeDirection.left:
+                      context.read<HomeCubit>().dislike(meals[index]);
+                      break;
+                    case SwipeDirection.right:
+                      context.read<HomeCubit>().like(meals[index]);
+                      break;
+                    case SwipeDirection.up:
+                      break;
+                    case SwipeDirection.down:
+                      break;
+                  }
                 },
                 builder: (context, properties) {
                   return MealCard(
@@ -106,25 +118,26 @@ class _MealStack extends StatelessWidget {
             ],
           ),
         ),
-        Visibility(
-          visible: controller.currentIndex < meals.length,
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                FloatingActionButton(
-                  onPressed: () =>
-                      controller.next(swipeDirection: SwipeDirection.left),
-                  child: const Icon(Icons.close),
-                ),
-                FloatingActionButton(
-                  onPressed: () =>
-                      controller.next(swipeDirection: SwipeDirection.right),
-                  child: const Icon(Icons.favorite),
-                ),
-              ],
-            ),
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              FloatingActionButton(
+                onPressed: () =>
+                    controller.next(swipeDirection: SwipeDirection.left),
+                child: const Icon(Icons.close),
+              ),
+              FloatingActionButton(
+                onPressed: () => context.read<HomeCubit>().reset(),
+                child: const Icon(Icons.restart_alt),
+              ),
+              FloatingActionButton(
+                onPressed: () =>
+                    controller.next(swipeDirection: SwipeDirection.right),
+                child: const Icon(Icons.favorite),
+              ),
+            ],
           ),
         )
       ],

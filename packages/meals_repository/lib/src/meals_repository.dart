@@ -28,10 +28,10 @@ class MealsRepository {
   /// Returns a list of all SNAQ meals.
   ///
   /// Throws a [MealsException] if an error occurs.
-  Future<List<Meal>> fetchAllMeals() async {
+  Future<List<Meal>> fetchStackedMeals() async {
     try {
       final remoteMeals = await _snaqApiClient.fetchAllMeals();
-      final localMeals = await _mealsDao.getAll();
+      var localMeals = await _mealsDao.getAll();
       for (var i = 0; i < remoteMeals.length; i++) {
         var isNew = true;
         for (var j = 0; j < localMeals.length; j++) {
@@ -47,8 +47,10 @@ class MealsRepository {
           await _mealsDao.insert(remoteMeals[i]);
         }
       }
-      final newMeals = await _mealsDao.getAll();
-      return newMeals;
+      localMeals = await _mealsDao.getAll();
+      return localMeals
+          .where((meal) => meal.status == MealStatus.stacked)
+          .toList();
     } on Exception {
       throw MealsException();
     }
@@ -57,17 +59,22 @@ class MealsRepository {
   /// Like a meal
   Future<void> like(Meal meal) async {
     meal.status = MealStatus.liked;
-    await _mealsDao.update(meal);
+    await _mealsDao.updateOrInsert(meal);
   }
 
   /// Dislike a meal
   Future<void> dislike(Meal meal) async {
     meal.status = MealStatus.disliked;
-    await _mealsDao.update(meal);
+    await _mealsDao.updateOrInsert(meal);
   }
 
   /// Delete a meal from history
   Future<void> delete(Meal meal) async {
     await _mealsDao.delete(meal);
+  }
+
+  /// Reset the app (because it's a demo/hometask)
+  Future<void> reset() async {
+    await _mealsDao.clear();
   }
 }

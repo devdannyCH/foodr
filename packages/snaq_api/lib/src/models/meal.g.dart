@@ -14,6 +14,8 @@ Meal _$MealFromJson(Map<String, dynamic> json) => Meal(
       mealComponents: (json['mealComponents'] as List<dynamic>)
           .map((e) => MealComponent.fromJson(e as Map<String, dynamic>))
           .toList(),
+      status: $enumDecodeNullable(_$MealStatusEnumMap, json['status']) ??
+          MealStatus.stacked,
     );
 
 Map<String, dynamic> _$MealToJson(Meal instance) => <String, dynamic>{
@@ -22,7 +24,14 @@ Map<String, dynamic> _$MealToJson(Meal instance) => <String, dynamic>{
       'image': instance.image,
       'nutrition': instance.nutrition.toJson(),
       'mealComponents': instance.mealComponents.map((e) => e.toJson()).toList(),
+      'status': _$MealStatusEnumMap[instance.status]!,
     };
+
+const _$MealStatusEnumMap = {
+  MealStatus.stacked: 'stacked',
+  MealStatus.liked: 'liked',
+  MealStatus.disliked: 'disliked',
+};
 
 MealComponent _$MealComponentFromJson(Map<String, dynamic> json) =>
     MealComponent(

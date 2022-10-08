@@ -10,24 +10,30 @@ class MealsDao {
 
   /// Insert a meal
   Future<void> insert(Meal meal) async {
-    await _store.add(await _db, meal.toJson());
+    await _store.record(meal.id.hashCode).add(await _db, meal.toJson());
   }
 
   /// Insert a list of meals
   Future<void> insertAll(List<Meal> meals) async {
-    await _store.addAll(await _db, meals.map((meal) => meal.toJson()).toList());
+    await _store
+        .records(meals.map((meal) => meal.id.hashCode))
+        .add(await _db, meals.map((meal) => meal.toJson()).toList());
   }
 
   /// Update a meal
+  /// Return the number of updated meals
   Future<void> update(Meal meal) async {
-    final finder = Finder(filter: Filter.byKey(meal.id));
-    await _store.update(await _db, meal.toJson(), finder: finder);
+    await _store.record(meal.id.hashCode).update(await _db, meal.toJson());
+  }
+
+  /// Insert or update a meal if not present
+  Future<void> updateOrInsert(Meal meal) async {
+    await _store.record(meal.id.hashCode).put(await _db, meal.toJson());
   }
 
   /// Delete a meal
   Future<void> delete(Meal meal) async {
-    final finder = Finder(filter: Filter.byKey(meal.id));
-    await _store.delete(await _db, finder: finder);
+    await _store.record(meal.id.hashCode).delete(await _db);
   }
 
   /// Delete all meals

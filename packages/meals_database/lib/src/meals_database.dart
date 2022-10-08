@@ -18,7 +18,7 @@ class MealsDatabase {
   /// Singleton database accessor
   static MealsDatabase get instance => _singleton;
 
-  /// Completer is used for transforming synchronous code into asynchronous code.
+  /// Completer is used for transforming synchronous code into asynchronous code
   Completer<Database>? _dbOpenCompleter;
 
   /// Database object accessor
