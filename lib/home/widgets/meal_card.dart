@@ -2,7 +2,6 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodr/home/home.dart';
-import 'package:foodr/main_development.dart';
 import 'package:meals_repository/meals_repository.dart';
 
 class MealCard extends StatelessWidget {
@@ -58,7 +57,7 @@ class _Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final meal = context.read<MealCubit>().state.meal;
+    final meal = context.select((MealCubit cubit) => cubit.state.meal);
     final energyUnit =
         meal.nutrition.energy.abbreviation.unit.toString().split('.').last;
     final energy = meal.nutrition.energy.value;

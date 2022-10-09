@@ -170,11 +170,12 @@ class NutritionComponent {
   /// Converts this [NutritionComponent] into a [JsonMap].
   JsonMap toJson() => _$NutritionComponentToJson(this);
 
+  @override
   String toString() {
     if (unit == Unit.kilocalories) {
-      return '$value${abbreviation.unit.name}';
+      return '$value ${abbreviation.unit.name}';
     } else {
-      return '${abbreviation.nutrient.name} $value${abbreviation.unit.name}';
+      return '${abbreviation.nutrient.name}: $value${abbreviation.unit.name}';
     }
   }
 }

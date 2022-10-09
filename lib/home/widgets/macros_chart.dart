@@ -8,7 +8,7 @@ class MacrosChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final meal = context.read<MealCubit>().state.meal;
+    final meal = context.select((MealCubit cubit) => cubit.state.meal);
     final radius = MediaQuery.of(context).size.width / 3;
     return Column(
       children: [

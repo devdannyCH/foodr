@@ -95,6 +95,7 @@ class _MealList extends StatelessWidget {
           );
         }
         return ListView(
+          key: UniqueKey(),
           children: [
             for (final meal in meals) MealCard(meal: meal),
           ],
