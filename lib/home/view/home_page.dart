@@ -134,8 +134,10 @@ class _MealStack extends StatelessWidget {
                   }
                 },
                 builder: (context, properties) {
-                  return MealCard(
-                    meal: meals[properties.index],
+                  return Center(
+                    child: MealCard(
+                      meal: meals[properties.index],
+                    ),
                   );
                 },
               ),

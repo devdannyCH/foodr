@@ -96,15 +96,7 @@ class _MealList extends StatelessWidget {
         }
         return ListView(
           children: [
-            for (final meal in meals)
-              AspectRatio(
-                aspectRatio: 1,
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.all(16),
-                  child: MealCard(meal: meal),
-                ),
-              )
+            for (final meal in meals) MealCard(meal: meal),
           ],
         );
       },
