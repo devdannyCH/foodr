@@ -15,7 +15,7 @@ class MealCard extends StatelessWidget {
     final kcal = meal.nutrition.energy.value;
     return Card(
       color: Theme.of(context).colorScheme.background,
-      clipBehavior: Clip.antiAliasWithSaveLayer,
+      clipBehavior: Clip.antiAlias,
       child: Stack(
         children: <Widget>[
           SizedBox.expand(

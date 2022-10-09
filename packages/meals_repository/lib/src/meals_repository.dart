@@ -56,6 +56,34 @@ class MealsRepository {
     }
   }
 
+  /// Returns a list of liked SNAQ meals.
+  ///
+  /// Throws a [MealsException] if an error occurs.
+  Future<List<Meal>> fetchLikedMeals() async {
+    try {
+      final localMeals = await _mealsDao.getAll();
+      return localMeals
+          .where((meal) => meal.status == MealStatus.liked)
+          .toList();
+    } on Exception {
+      throw MealsException();
+    }
+  }
+
+  /// Returns a list of disliked SNAQ meals.
+  ///
+  /// Throws a [MealsException] if an error occurs.
+  Future<List<Meal>> fetchDislikedMeals() async {
+    try {
+      final localMeals = await _mealsDao.getAll();
+      return localMeals
+          .where((meal) => meal.status == MealStatus.disliked)
+          .toList();
+    } on Exception {
+      throw MealsException();
+    }
+  }
+
   /// Like a meal
   Future<void> like(Meal meal) async {
     meal.status = MealStatus.liked;

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodr/home/home.dart';
 import 'package:foodr/l10n/l10n.dart';
 import 'package:meals_repository/meals_repository.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 
 class HomePage extends StatelessWidget {
@@ -34,7 +35,20 @@ class HomeView extends StatelessWidget {
         title: Icon(Icons.restaurant, color: Theme.of(context).primaryColor),
         actions: [
           IconButton(
-            onPressed: () => debugPrint('bottomSheet'),
+            onPressed: () {
+              showCupertinoModalBottomSheet<void>(
+                context: context,
+                elevation: 1,
+                topRadius: const Radius.circular(28),
+                backgroundColor: Theme.of(context).colorScheme.surface,
+                builder: (context) => Column(
+                  children: const [
+                    DragHandle(),
+                    Expanded(child: HistoryPage()),
+                  ],
+                ),
+              );
+            },
             icon: const Icon(Icons.view_agenda),
           ),
         ],
@@ -134,15 +148,18 @@ class _MealStack extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               FloatingActionButton(
+                heroTag: 'left',
                 onPressed: () =>
                     controller.next(swipeDirection: SwipeDirection.left),
                 child: const Icon(Icons.close),
               ),
               FloatingActionButton(
+                heroTag: 'reset',
                 onPressed: () => context.read<HomeCubit>().reset(),
                 child: const Icon(Icons.restart_alt),
               ),
               FloatingActionButton(
+                heroTag: 'right',
                 onPressed: () =>
                     controller.next(swipeDirection: SwipeDirection.right),
                 child: const Icon(Icons.favorite),
