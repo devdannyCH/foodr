@@ -14,6 +14,7 @@ class MealCard extends StatelessWidget {
         meal.nutrition.energy.abbreviation.unit.toString().split('.').last;
     final kcal = meal.nutrition.energy.value;
     return Card(
+      color: Theme.of(context).colorScheme.background,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: Stack(
         children: <Widget>[

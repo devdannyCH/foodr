@@ -27,7 +27,17 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // leading: IconButton(
+        //   onPressed: () => debugPrint('profile'),
+        //   icon: const Icon(Icons.person),
+        // ),
         title: Icon(Icons.restaurant, color: Theme.of(context).primaryColor),
+        actions: [
+          IconButton(
+            onPressed: () => debugPrint('bottomSheet'),
+            icon: const Icon(Icons.view_agenda),
+          ),
+        ],
       ),
       body: const SafeArea(
         child: _Content(),
