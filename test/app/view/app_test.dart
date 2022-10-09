@@ -5,8 +5,9 @@ import 'package:meals_repository/meals_repository.dart';
 
 void main() {
   group('App', () {
-    testWidgets('renders CounterPage', (tester) async {
+    testWidgets('renders HomePage', (tester) async {
       await tester.pumpWidget(App(mealsRepository: MealsRepository()));
+      await tester.pumpAndSettle();
       expect(find.byType(HomePage), findsOneWidget);
     });
   });
