@@ -8,8 +8,12 @@
     "@homeMealsFetchErrorMessage": {
         "description": "Error text shown on the Home Page when an error occurred while fetching meals."
     },
-    "noMealMessage": "No more meal to display",
-    "@noMealMessage": {
+    "homeNoMealMessage": "No more meal to display",
+    "@homeNoMealMessage": {
         "description": "Text shown on the Home Page when there is no more meals to display."
+    },
+    "historyNoMealMessage": "No meals to display",
+    "@homeNoMealMessage": {
+        "description": "Text shown on the history Page when there is no meals to display."
     }
 }

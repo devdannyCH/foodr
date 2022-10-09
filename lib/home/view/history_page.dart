@@ -86,12 +86,13 @@ class _MealList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10 = context.l10n;
     return BlocBuilder<HistoryCubit, HistoryState>(
       builder: (context, state) {
         final meals = state.meals ?? [];
         if (meals.isEmpty) {
-          return const Center(
-            child: Text('Empty'),
+          return Center(
+            child: Text(l10.historyNoMealMessage),
           );
         }
         return ListView(

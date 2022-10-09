@@ -107,7 +107,7 @@ class _MealStack extends StatelessWidget {
         Expanded(
           child: Stack(
             children: [
-              Center(child: Text(l10n.noMealMessage)),
+              Center(child: Text(l10n.homeNoMealMessage)),
               SwipableStack(
                 itemCount: meals.length,
                 detectableSwipeDirections: const {

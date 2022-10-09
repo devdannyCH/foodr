@@ -8,8 +8,12 @@
     "@homeMealsFetchErrorMessage": {
         "description": "Texte d'erreur affiché sur la page d'accueil lorsqu'une erreur s'est produite lors de la récupération des repas."
     },
-    "noMealMessage": "Il n'y a plus de repas à afficher",
-    "@noMealMessage": {
+    "homeNoMealMessage": "Il n'y a plus de repas à afficher",
+    "@homeNoMealMessage": {
         "description": "Texte affiché sur la page d'accueil lorsqu'il n'y a plus de repas à afficher."
+    },
+    "historyNoMealMessage": "Auncun repas à afficher",
+    "@homeNoMealMessage": {
+        "description": "Texte affiché sur l'historique lorsqu'il n'y a pas de repas à afficher."
     }
 }
