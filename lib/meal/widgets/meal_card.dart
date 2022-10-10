@@ -58,9 +58,6 @@ class _Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final meal = context.select((MealCubit cubit) => cubit.state.meal);
-    final energyUnit =
-        meal.nutrition.energy.abbreviation.unit.toString().split('.').last;
-    final energy = meal.nutrition.energy.value;
     return Stack(
       children: <Widget>[
         SizedBox.expand(
@@ -74,7 +71,7 @@ class _Content extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Chip(
-              label: Text('$energy $energyUnit'),
+              label: Text(meal.nutrition.energy.toString()),
             ),
           ),
         ),
@@ -108,13 +105,21 @@ class _DetailsContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final meal = context.select((MealCubit cubit) => cubit.state.meal);
     return BlocBuilder<MealCubit, MealState>(
       builder: (context, state) {
         switch (state.selectedDetails) {
           case MealDetails.macros:
             return const MacrosChart();
           case MealDetails.components:
-            return const _MealComponentsList();
+            return Column(
+              children: [
+                const Expanded(child: _MealComponentsList()),
+                Chip(
+                  label: Text(meal.nutrition.energy.toString()),
+                ),
+              ],
+            );
         }
       },
     );
@@ -174,18 +179,8 @@ class _MealComponentsList extends StatelessWidget {
       itemCount: mealComponents.length,
       itemBuilder: (context, index) {
         final mainIngredient = mealComponents[index].mainIngredient!;
-        return ListTile(
-          title: Text(mainIngredient.name),
-          subtitle: Row(
-            children: [
-              Text(mainIngredient.nutrition.carbohydrates.toString()),
-              const SizedBox(width: 8),
-              Text(mainIngredient.nutrition.protein.toString()),
-              const SizedBox(width: 8),
-              Text(mainIngredient.nutrition.fatTotal.toString()),
-            ],
-          ),
-          trailing: Text(mainIngredient.nutrition.energy.toString()),
+        return IngredientTile(
+          ingredient: mainIngredient,
         );
       },
     );

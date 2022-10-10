@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:meals_repository/meals_repository.dart';
 
 part 'home_state.dart';
@@ -47,7 +48,11 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<void> reset() async {
-    await _mealsRepository.reset();
-    await fetchAllMeals();
+    if (!isClosed) {
+      await _mealsRepository.reset();
+      await fetchAllMeals();
+    } else {
+      debugPrint('home_cubit closed');
+    }
   }
 }

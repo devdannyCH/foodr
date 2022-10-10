@@ -8,8 +8,11 @@
 import 'package:meals_database/meals_database.dart';
 import 'package:snaq_api/snaq_api.dart';
 
-/// Thrown when an error occurs while looking up rockets.
+/// Thrown when an error occurs while looking up meals.
 class MealsException implements Exception {}
+
+/// Thrown when an error occurs while looking up ingredients.
+class IngredientsException implements Exception {}
 
 /// {@template meals_repository}
 /// A repository that handles meals related requests.
@@ -104,5 +107,25 @@ class MealsRepository {
   /// Reset the app (because it's a demo/hometask)
   Future<void> reset() async {
     await _mealsDao.clear();
+  }
+
+  /// Returns a list of all ingredients available.
+  ///
+  /// Throws a [MealsException] if an error occurs.
+  Future<List<Ingredient>> fetchAllIngredients() async {
+    try {
+      final localMeals = await _mealsDao.getAll();
+      final ingredients = <Ingredient>{};
+      for (final meal in localMeals) {
+        for (final component in meal.mealComponents) {
+          if (component.mainIngredient != null) {
+            ingredients.add(component.mainIngredient!);
+          }
+        }
+      }
+      return ingredients.toList();
+    } on Exception {
+      throw MealsException();
+    }
   }
 }

@@ -56,7 +56,7 @@ void main() {
     });
 
     group('.fetchAllMeals', () {
-      test('throws RocketsException when api throws an exception', () async {
+      test('throws mealsException when api throws an exception', () async {
         when(() => snaqApiClient.fetchAllMeals()).thenThrow(Exception());
 
         expect(

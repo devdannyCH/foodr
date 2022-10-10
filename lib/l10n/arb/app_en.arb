@@ -14,6 +14,14 @@
     },
     "historyNoMealMessage": "No meals to display",
     "@homeNoMealMessage": {
-        "description": "Text shown on the history Page when there is no meals to display."
+        "description": "Text shown on the History Page when there is no meals to display."
+    },
+    "profileNoIngredientMessage": "No ingredients to display",
+    "@homeNoMealMessage": {
+        "description": "Text shown on the Profile Page when there is no ingredients to display."
+    },
+    "profileResetDemo": "Reset demo data",
+    "@profileResetDemo": {
+        "description": "Text shown in the reset button of the Profile page"
     }
 }

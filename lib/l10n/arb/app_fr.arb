@@ -15,5 +15,13 @@
     "historyNoMealMessage": "Auncun repas à afficher",
     "@homeNoMealMessage": {
         "description": "Texte affiché sur l'historique lorsqu'il n'y a pas de repas à afficher."
+    },
+    "profileNoIngredientMessage": "Auncun ingrédient à afficher",
+    "@homeNoMealMessage": {
+        "description": "Texte affiché sur le profil lorsqu'il n'y a pas de ingrédient à afficher."
+    },
+    "profileResetDemo": "Réinitialisation la demo",
+    "@profileResetDemo": {
+        "description": "Texte affiché dans le bouton de réinitialisation de la page Profil"
     }
 }

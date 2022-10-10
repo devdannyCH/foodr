@@ -80,7 +80,7 @@ class MealComponent {
 /// {@template meal}
 /// A model containing data about a ingredient.
 /// {@endtemplate}
-class Ingredient {
+class Ingredient extends Equatable {
   /// {@macro ingredient}
   const Ingredient({
     required this.name,
@@ -98,6 +98,9 @@ class Ingredient {
 
   /// Converts this [Ingredient] into a [JsonMap].
   JsonMap toJson() => _$IngredientToJson(this);
+
+  @override
+  List<Object?> get props => [name];
 }
 
 @JsonSerializable(explicitToJson: true)

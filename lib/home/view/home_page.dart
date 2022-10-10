@@ -5,6 +5,7 @@ import 'package:foodr/history/history.dart';
 import 'package:foodr/home/home.dart';
 import 'package:foodr/l10n/l10n.dart';
 import 'package:foodr/meal/meal.dart';
+import 'package:foodr/profile/profile.dart';
 import 'package:meals_repository/meals_repository.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:swipable_stack/swipable_stack.dart';
@@ -31,26 +32,21 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => debugPrint('profile'),
+          onPressed: () {
+            _displayBottomSheet(
+              context,
+              BlocProvider.value(
+                value: context.read<HomeCubit>(),
+                child: const ProfilePage(),
+              ),
+            );
+          },
           icon: const Icon(Icons.person),
         ),
         title: Icon(Icons.restaurant, color: Theme.of(context).primaryColor),
         actions: [
           IconButton(
-            onPressed: () {
-              showCupertinoModalBottomSheet<void>(
-                context: context,
-                elevation: 1,
-                topRadius: const Radius.circular(28),
-                backgroundColor: Theme.of(context).colorScheme.surface,
-                builder: (context) => Column(
-                  children: const [
-                    DragHandle(),
-                    Expanded(child: HistoryPage()),
-                  ],
-                ),
-              );
-            },
+            onPressed: () => _displayBottomSheet(context, const HistoryPage()),
             icon: const Icon(Icons.view_agenda),
           ),
         ],
@@ -60,6 +56,21 @@ class HomeView extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> _displayBottomSheet(BuildContext context, Widget widget) async {
+  return showCupertinoModalBottomSheet<void>(
+    context: context,
+    elevation: 1,
+    topRadius: const Radius.circular(28),
+    backgroundColor: Theme.of(context).colorScheme.surface,
+    builder: (context) => Column(
+      children: [
+        const DragHandle(),
+        Expanded(child: widget),
+      ],
+    ),
+  );
 }
 
 class _Content extends StatelessWidget {
@@ -156,11 +167,6 @@ class _MealStack extends StatelessWidget {
                 onPressed: () =>
                     controller.next(swipeDirection: SwipeDirection.left),
                 child: const Icon(Icons.close),
-              ),
-              FloatingActionButton(
-                heroTag: 'reset',
-                onPressed: () => context.read<HomeCubit>().reset(),
-                child: const Icon(Icons.restart_alt),
               ),
               FloatingActionButton(
                 heroTag: 'right',

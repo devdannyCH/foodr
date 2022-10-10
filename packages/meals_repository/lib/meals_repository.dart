@@ -9,4 +9,6 @@
 library meals_repository;
 
 export 'package:snaq_api/snaq_api.dart' show Meal;
+export 'package:snaq_api/snaq_api.dart' show Ingredient;
+export 'package:snaq_api/snaq_api.dart' show NutritionComponent;
 export 'src/meals_repository.dart';
