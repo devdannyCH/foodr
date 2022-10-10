@@ -132,7 +132,10 @@ class _EnergySlider extends StatelessWidget {
                   value: state.profile!.energyThreshold,
                   onChanged: (newThreshold) => context
                       .read<ProfileCubit>()
-                      .updateEnergyThreshold(newThreshold),
+                      .updateEnergyThreshold(newThreshold)
+                      .then(
+                        (_) => context.read<HomeCubit>().fetchAllMeals(),
+                      ),
                 ),
               ),
               Text('>${Profile.maxEnergyThreshold.toInt()}'),
@@ -167,7 +170,10 @@ class _IngredientsList extends StatelessWidget {
               IngredientTile(
                 onTap: () => context
                     .read<ProfileCubit>()
-                    .toggleBannedIngredients(ingredient),
+                    .toggleBannedIngredients(ingredient)
+                    .then(
+                      (_) => context.read<HomeCubit>().fetchAllMeals(),
+                    ),
                 selected: bannedIngredients.contains(ingredient),
                 selectedColor: Theme.of(context).colorScheme.onErrorContainer,
                 selectedTileColor: Theme.of(context).colorScheme.errorContainer,

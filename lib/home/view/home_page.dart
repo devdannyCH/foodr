@@ -8,6 +8,7 @@ import 'package:foodr/meal/meal.dart';
 import 'package:foodr/profile/profile.dart';
 import 'package:meals_repository/meals_repository.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:profile_repository/profile_repository.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 
 class HomePage extends StatelessWidget {
@@ -18,6 +19,7 @@ class HomePage extends StatelessWidget {
     return BlocProvider(
       create: (_) => HomeCubit(
         mealsRepository: context.read<MealsRepository>(),
+        profileRepository: context.read<ProfileRepository>(),
       )..fetchAllMeals(),
       child: const HomeView(),
     );

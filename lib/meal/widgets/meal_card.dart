@@ -87,10 +87,10 @@ class _Details extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        const SizedBox(height: 16),
+      children: const [
+        SizedBox(height: 16),
         _MealDetailsFilter(),
-        const Expanded(
+        Expanded(
           child: Padding(
             padding: EdgeInsets.all(16),
             child: _DetailsContent(),
@@ -128,7 +128,7 @@ class _DetailsContent extends StatelessWidget {
 }
 
 class _MealDetailsFilter extends StatelessWidget {
-  _MealDetailsFilter();
+  const _MealDetailsFilter();
 
   @override
   Widget build(BuildContext context) {
