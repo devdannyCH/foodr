@@ -46,6 +46,7 @@ class HomeView extends StatelessWidget {
           icon: const Icon(Icons.person),
         ),
         title: Icon(Icons.restaurant, color: Theme.of(context).primaryColor),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () => _displayBottomSheet(context, const HistoryPage()),
