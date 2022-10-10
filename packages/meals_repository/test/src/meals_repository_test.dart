@@ -1,13 +1,20 @@
+import 'dart:ffi';
+
+import 'package:flutter_test/flutter_test.dart';
+import 'package:meals_database/meals_database.dart';
 import 'package:meals_repository/meals_repository.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:snaq_api/snaq_api.dart';
-import 'package:test/test.dart';
 
 class MockSnaqApiClient extends Mock implements SnaqApiClient {}
 
+class MockMealsDao extends Mock implements MealsDao {}
+
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
   group('MealsRepisotiry', () {
     late SnaqApiClient snaqApiClient;
+    late MealsDao mealsDao;
     late MealsRepository subject;
 
     const abbreviation = Abbreviation(
@@ -43,9 +50,11 @@ void main() {
 
     setUp(() {
       snaqApiClient = MockSnaqApiClient();
+      mealsDao = MockMealsDao();
       when(() => snaqApiClient.fetchAllMeals()).thenAnswer((_) async => meals);
-
-      subject = MealsRepository(snaqApiClient: snaqApiClient);
+      when(() => mealsDao.getAll()).thenAnswer((_) async => meals);
+      subject =
+          MealsRepository(snaqApiClient: snaqApiClient, mealsDao: mealsDao);
     });
 
     test('constructor returns normally', () {
@@ -63,12 +72,6 @@ void main() {
           () => subject.fetchStackedMeals(),
           throwsA(isA<MealsException>()),
         );
-
-        verify(() => snaqApiClient.fetchAllMeals()).called(1);
-      });
-
-      test('makes correct request', () async {
-        await subject.fetchStackedMeals();
 
         verify(() => snaqApiClient.fetchAllMeals()).called(1);
       });
