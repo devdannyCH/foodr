@@ -21,6 +21,8 @@ dependencies:
   meals_repository:
     path: packages/meals_repository
   modal_bottom_sheet: ^2.1.2
+  profile_repository:
+    path: packages/profile_repository
   swipable_stack: ^2.0.0
 dev_dependencies:
   bloc_test: ^9.1.0

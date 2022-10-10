@@ -1,6 +1,7 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodr/l10n/l10n.dart';
 import 'package:foodr/meal/meal.dart';
 import 'package:meals_repository/meals_repository.dart';
 
@@ -129,13 +130,9 @@ class _DetailsContent extends StatelessWidget {
 class _MealDetailsFilter extends StatelessWidget {
   _MealDetailsFilter();
 
-  final List<Widget> mealDetails = <Widget>[
-    const Text('Macros'),
-    const Text('Components'),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final colorScheme = Theme.of(context).colorScheme;
     return BlocBuilder<MealCubit, MealState>(
       builder: (context, state) {
@@ -156,7 +153,10 @@ class _MealDetailsFilter extends StatelessWidget {
             minWidth: (MediaQuery.of(context).size.width - 72) / 2,
           ),
           isSelected: isSelected,
-          children: mealDetails,
+          children: [
+            Text(l10n.mealMacros),
+            Text(l10n.mealIngredients),
+          ],
         );
       },
     );

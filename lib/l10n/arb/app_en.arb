@@ -23,5 +23,21 @@
     "profileResetDemo": "Reset demo data",
     "@profileResetDemo": {
         "description": "Text shown in the reset button of the Profile page"
+    },
+    "profileSelectEnergyThreshold": "Select max calories limit",
+    "@profileSelectEnergyThreshold": {
+        "description": "Text shown on top of energy slider"
+    },
+    "profileTapTobanIngredients": "Tap to ban ingredients",
+    "@profileTapTobanIngredients": {
+        "description": "Text shown on top of banned ingredients"
+    },
+    "mealMacros": "Macros",
+    "@mealMacros": {
+        "description": "Text shown in meal card toggle buttons"
+    },
+    "mealIngredients": "Ingredients",
+    "@mealIngredients": {
+        "description": "Text shown in meal card toggle buttons"
     }
 }

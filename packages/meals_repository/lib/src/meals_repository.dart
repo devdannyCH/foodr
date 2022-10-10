@@ -125,7 +125,7 @@ class MealsRepository {
       }
       return ingredients.toList();
     } on Exception {
-      throw MealsException();
+      throw IngredientsException();
     }
   }
 }

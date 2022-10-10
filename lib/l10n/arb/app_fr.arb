@@ -23,5 +23,21 @@
     "profileResetDemo": "Réinitialisation la demo",
     "@profileResetDemo": {
         "description": "Texte affiché dans le bouton de réinitialisation de la page Profil"
+    },
+    "profileSelectEnergyThreshold": "Sélectionnez la limite de calories maximale",
+    "@profileSelectEnergyThreshold": {
+        "description": "Texte affiché en haut du curseur d'énergie"
+    },
+    "profileTapTobanIngredients": "Taper pour interdire les ingrédients",
+    "@profileTapTobanIngredients": {
+        "description": "Texte affiché en haut des ingrédients interdits"
+    },
+    "mealMacros": "Macros",
+    "@mealMacros": {
+        "description": "Texte affiché dans le bouton à bascule de la carte de repas"
+    },
+    "mealIngredients": "Ingrédients",
+    "@mealIngredients": {
+        "description": "Texte affiché dans le bouton à bascule de la carte de repas"
     }
 }
