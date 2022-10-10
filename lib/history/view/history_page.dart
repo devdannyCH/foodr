@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodr/home/home.dart';
+import 'package:foodr/history/history.dart';
 import 'package:foodr/l10n/l10n.dart';
+import 'package:foodr/meal/meal.dart';
 import 'package:meals_repository/meals_repository.dart';
 
 class HistoryPage extends StatelessWidget {

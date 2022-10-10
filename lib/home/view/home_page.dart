@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodr/history/history.dart';
 import 'package:foodr/home/home.dart';
 import 'package:foodr/l10n/l10n.dart';
+import 'package:foodr/meal/meal.dart';
 import 'package:meals_repository/meals_repository.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:swipable_stack/swipable_stack.dart';
@@ -28,10 +30,10 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // leading: IconButton(
-        //   onPressed: () => debugPrint('profile'),
-        //   icon: const Icon(Icons.person),
-        // ),
+        leading: IconButton(
+          onPressed: () => debugPrint('profile'),
+          icon: const Icon(Icons.person),
+        ),
         title: Icon(Icons.restaurant, color: Theme.of(context).primaryColor),
         actions: [
           IconButton(
