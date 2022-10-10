@@ -119,26 +119,37 @@ class _EnergySlider extends StatelessWidget {
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder: (context, state) {
         return Container(
-          height: 32,
           margin: const EdgeInsets.all(16),
-          child: Row(
+          child: Column(
             children: [
-              Text(Profile.minEnergyThreshold.toInt().toString()),
-              Expanded(
-                child: Slider(
-                  // ignore: avoid_redundant_argument_values
-                  min: Profile.minEnergyThreshold,
-                  max: Profile.maxEnergyThreshold,
-                  value: state.profile!.energyThreshold,
-                  onChanged: (newThreshold) => context
-                      .read<ProfileCubit>()
-                      .updateEnergyThreshold(newThreshold)
-                      .then(
-                        (_) => context.read<HomeCubit>().fetchAllMeals(),
-                      ),
-                ),
+              Row(
+                children: [
+                  Text(Profile.minEnergyThreshold.toInt().toString()),
+                  Expanded(
+                    child: Slider(
+                      // ignore: avoid_redundant_argument_values
+                      min: Profile.minEnergyThreshold,
+                      max: Profile.maxEnergyThreshold,
+                      value: state.profile!.energyThreshold,
+                      onChanged: (newThreshold) => context
+                          .read<ProfileCubit>()
+                          .updateEnergyThreshold(newThreshold)
+                          .then(
+                            (_) => context.read<HomeCubit>().fetchAllMeals(),
+                          ),
+                    ),
+                  ),
+                  Text('>${Profile.maxEnergyThreshold.toInt()}'),
+                ],
               ),
-              Text('>${Profile.maxEnergyThreshold.toInt()}'),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Chip(
+                  label: Text(
+                    '${state.profile!.energyThreshold.toInt().toString()} kcal',
+                  ),
+                ),
+              )
             ],
           ),
         );

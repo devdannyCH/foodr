@@ -17,6 +17,8 @@ This project contains 3 flavors:
 - staging
 - production
 
+In this demo app, they have all the same behavior
+
 To run the desired flavor either use the launch configuration in VSCode/Android Studio or use the following commands:
 
 ```sh
